@@ -82,8 +82,15 @@ def delete_task():
 
     for task in tasks:
         if task["id"] == task_id:
-            tasks.remove(task)
-            print("Task deleted successfully!")
+            confirm = input(
+                f"Delete '{task['title']}'? (y/n): "
+            ).strip().lower()
+
+            if confirm == "y":
+                tasks.remove(task)
+                print("Task deleted successfully!")
+            else:
+                print("Deletion cancelled.")
             return
 
     print("Task ID not found.")
@@ -118,7 +125,7 @@ def main():
             break
 
         else:
-            print("Invalid choice.")
+            print("Invalid choice. Please select 1-5.")
 
 
 # Program execution starts here
