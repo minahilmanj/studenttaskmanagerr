@@ -67,6 +67,28 @@ def complete_task():
     print("Task ID not found.")
 
 
+# Function to delete a task
+def delete_task():
+    display_tasks()
+
+    if not tasks:
+        return
+
+    try:
+        task_id = int(input("Enter task ID to delete: "))
+    except ValueError:
+        print("Invalid ID. Please enter a number.")
+        return
+
+    for task in tasks:
+        if task["id"] == task_id:
+            tasks.remove(task)
+            print("Task deleted successfully!")
+            return
+
+    print("Task ID not found.")
+
+
 # Main menu function
 def main():
     while True:
@@ -74,7 +96,8 @@ def main():
         print("1. Add Task")
         print("2. Display Tasks")
         print("3. Complete Task")
-        print("4. Exit")
+        print("4. Delete Task")
+        print("5. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -88,6 +111,9 @@ def main():
             complete_task()
 
         elif choice == "4":
+            delete_task()
+
+        elif choice == "5":
             print("Goodbye!")
             break
 
