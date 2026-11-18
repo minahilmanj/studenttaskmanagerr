@@ -3,6 +3,7 @@ tasks = []
 next_id = 1
 
 
+# Function to add a new task
 def add_task():
     global next_id
 
@@ -28,6 +29,7 @@ def add_task():
     print("Task added successfully!")
 
 
+# Function to display all tasks
 def display_tasks():
     print("\n--- Student Task Manager ---")
 
@@ -40,6 +42,7 @@ def display_tasks():
         print(f'{task["id"]}. {task["title"]} - {status}')
 
 
+# Function to mark a task as completed
 def complete_task():
     display_tasks()
 
@@ -54,13 +57,17 @@ def complete_task():
 
     for task in tasks:
         if task["id"] == task_id:
-            task["completed"] = True
-            print("Task marked as completed!")
+            if task["completed"]:
+                print("This task is already completed.")
+            else:
+                task["completed"] = True
+                print("Task marked as completed!")
             return
 
     print("Task ID not found.")
 
 
+# Main menu function
 def main():
     while True:
         print("\n===== Student Task Manager =====")
@@ -73,16 +80,21 @@ def main():
 
         if choice == "1":
             add_task()
+
         elif choice == "2":
             display_tasks()
+
         elif choice == "3":
             complete_task()
+
         elif choice == "4":
             print("Goodbye!")
             break
+
         else:
             print("Invalid choice.")
 
 
+# Program execution starts here
 if __name__ == "__main__":
     main()
