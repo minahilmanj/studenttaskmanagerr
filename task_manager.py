@@ -6,7 +6,15 @@ next_id = 1
 def add_task():
     global next_id
 
-    title = input("Enter task title: ")
+    title = input("Enter task title: ").strip()
+
+    if not title:
+        print("Error: Task title cannot be empty.")
+        return
+
+    if len(title) > 100:
+        print("Error: Task title cannot exceed 100 characters.")
+        return
 
     task = {
         "id": next_id,
