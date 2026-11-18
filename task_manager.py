@@ -3,10 +3,15 @@ tasks = []
 next_id = 1
 
 
+
 def add_task():
     global next_id
 
-    title = input("Enter task title: ")
+    title = input("Enter task title: ").strip()
+
+    if not title:
+        print("Error: Task title cannot be empty.")
+        return
 
     task = {
         "id": next_id,
@@ -18,6 +23,7 @@ def add_task():
     next_id += 1
 
     print("Task added successfully!")
+
 
 
 def display_tasks():
