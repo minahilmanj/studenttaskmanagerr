@@ -3,7 +3,6 @@ tasks = []
 next_id = 1
 
 
-
 def add_task():
     global next_id
 
@@ -11,6 +10,10 @@ def add_task():
 
     if not title:
         print("Error: Task title cannot be empty.")
+        return
+
+    if len(title) > 100:
+        print("Error: Task title cannot exceed 100 characters.")
         return
 
     task = {
@@ -23,7 +26,6 @@ def add_task():
     next_id += 1
 
     print("Task added successfully!")
-
 
 
 def display_tasks():
